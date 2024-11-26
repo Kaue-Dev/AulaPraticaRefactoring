@@ -23,7 +23,6 @@ public class Movie {
     return _title;
   }
 
-  // Novo método que processa o cálculo baseado no código de preço
   public double getCharge(int daysRented) {
     double result = 0;
     switch (_priceCode) {
@@ -44,5 +43,13 @@ public class Movie {
         break;
     }
     return result;
+  }
+
+  // Novo método que calcula os pontos de locação frequente
+  public int getFrequentRenterPoints(int daysRented) {
+    if (_priceCode == NEW_RELEASE && daysRented > 1) {
+      return 2; // Bônus para novos lançamentos alugados por mais de 1 dia
+    }
+    return 1; // Padrão: 1 ponto por aluguel
   }
 }

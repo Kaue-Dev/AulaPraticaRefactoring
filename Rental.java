@@ -16,14 +16,11 @@ public class Rental {
   }
 
   public double getCharge() {
-    // Delegação para o método da classe Movie
     return _movie.getCharge(_daysRented);
   }
 
+  // Delegação para a classe Movie
   public int getFrequentRenterPoints() {
-    if (_movie.getPriceCode() == Movie.NEW_RELEASE && _daysRented > 1) {
-      return 2; // Bônus para novos lançamentos alugados por mais de 1 dia
-    }
-    return 1; // Padrão: 1 ponto por aluguel
+    return _movie.getFrequentRenterPoints(_daysRented);
   }
 }
